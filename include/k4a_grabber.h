@@ -12,7 +12,7 @@ namespace pcl
 	struct pcl::PointXYZI;
 	struct pcl::PointXYZRGB;
 	struct pcl::PointXYZRGBA;
-	template <typename T> class pcl::PointCloud;
+	// template <typename T> class pcl::PointCloud;
 
 	class KinectAzureDKGrabber : public pcl::Grabber
 	{

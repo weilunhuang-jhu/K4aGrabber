@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.8.3)
 PROJECT(K4a_grabber)
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
+set(CMAKE_CXX_STANDARD 17)
+# set up for glm
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+
 macro(process_ext_sdk)
   message(STATUS "K4A SDK found in ext/sdk!")
   message(STATUS "!! Not searching for SDK in system path !!")
@@ -160,13 +164,9 @@ find_package(PCL 1.9.1 REQUIRED COMPONENTS io visualization)
 FIND_PACKAGE(Open3D REQUIRED)
 
 # Find GLM. You have to set the glm_room path with your environment
-set(GLM_DIR "D:/glm-0.9.7.1/my/install")
-set(GLM_ROOT "D:/glm-0.9.7.1/my/install")
-IF(NOT GLM_ROOT)
-    MESSAGE("ERROR: GLM_ROOT must be set!")
-ENDIF(NOT GLM_ROOT)
+find_package(GLM REQUIRED)
+message(STATUS "GLM included at ${GLM_INCLUDE_DIR}")
 
-FIND_PATH(GLM_INCLUDE_DIRS DOC "Path to GLM include directory." NAMES glm/glm.hpp PATHS ${GLM_ROOT}/include)
 
 add_subdirectory(PCL_Grabber_OneKinect)
-add_subdirectory(PCL_Grabber_TwoKinects)
+# add_subdirectory(PCL_Grabber_TwoKinects)

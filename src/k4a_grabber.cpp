@@ -109,19 +109,19 @@ void pcl::KinectAzureDKGrabber::threadFunction()
 		depthImage = capture.get_depth_image();
 		if (depthImage == nullptr)
 		{
-			throw std::exception("Failed to get depth image from capture\n");
+			throw std::runtime_error("Failed to get depth image from capture\n");
 		}
 
 		colorImage = capture.get_color_image();
 		if (colorImage == nullptr)
 		{
-			throw std::exception("Failed to get color image from capture\n");
+			throw std::runtime_error("Failed to get color image from capture\n");
 		}
 
 		infraredImage = capture.get_ir_image();
 		if (infraredImage == nullptr)
 		{
-			throw std::exception("Failed to get IR image from capture\n");
+			throw std::runtime_error("Failed to get IR image from capture\n");
 		}
 
 		lock.unlock();
